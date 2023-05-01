@@ -1,0 +1,55 @@
+﻿@model TravelExperts.Models.Customer
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label asp-for="CustFirstName">First Name:</label>
+        <input asp-for="CustFirstName" />
+    </div>
+    <div>
+        <label asp-for="CustLastName">Last Name:</label>
+        <input asp-for="CustLastName" />
+    </div>
+    <div>
+        <label asp-for="CustAddress">Address:</label>
+        <input asp-for="CustAddress" />
+    </div>
+    <div>
+        <label asp-for="CustCity">City:</label>
+        <input asp-for="CustCity" />
+    </div>
+    <div>
+        <label asp-for="CustProv">Province:</label>
+        <input asp-for="CustProv" />
+    </div>
+    <div>
+        <label asp-for="CustPostal">Postal Code:</label>
+        <input asp-for="CustPostal" />
+    </div>
+    <div>
+        <label asp-for="CustCountry">Country:</label>
+        <input asp-for="CustCountry" />
+    </div>
+    <div>
+        <label asp-for="CustHomePhone">Home Phone:</label>
+        <input asp-for="CustHomePhone" />
+    </div>
+    <div>
+        <label asp-for="CustEmail">Email:</label>
+        <input asp-for="CustEmail" type="email" />
+    </div>
+    <div>
+        <label asp-for="Username">Username:</label>
+        <input asp-for="Username" />
+    </div>
+    <div>
+        <label asp-for="Password">Password:</label>
+        <input asp-for="Password" type="password" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
