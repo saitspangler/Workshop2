@@ -1,22 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using TravelExperts.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
-using TravelExpertsData;
+using Microsoft.AspNetCore.Identity;
+using TravelExpertsData.Models;
 
 namespace TravelExperts.Controllers
 {
     public class AccountController : Controller
     {
         private readonly TravelExpertsContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController(TravelExpertsContext context)
+        public AccountController(TravelExpertsContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public IActionResult Login()
@@ -25,32 +31,27 @@ namespace TravelExperts.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(Customer customer)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
-            var validCustomer = _context.Customers
-                                .FirstOrDefault(c => c.Username == customer.Username && c.Password == customer.Password);
-
-            if (validCustomer != null)
+            if (ModelState.IsValid)
             {
-                var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, validCustomer.Username),
-            new Claim(ClaimTypes.NameIdentifier, validCustomer.CustomerId.ToString())
-        };
+                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: false, lockoutOnFailure: false);
 
-                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var principal = new ClaimsPrincipal(identity);
-
-                await HttpContext.SignInAsync(principal);
-
-                return RedirectToAction("Index", "Home");
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid username or password.");
+                    return View(model);
+                }
             }
-            else
-            {
-                ModelState.AddModelError("", "Invalid username or password.");
-                return View();
-            }
+
+            return View(model);
         }
+
+
 
 
         [HttpPost]
