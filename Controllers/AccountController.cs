@@ -31,7 +31,7 @@ namespace TravelExperts.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(Customer model)
         {
             if (ModelState.IsValid)
             {
