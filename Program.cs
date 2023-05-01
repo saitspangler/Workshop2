@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using TravelExperts.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Session;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
+using TravelExpertsData;
 
 var builder = WebApplication.CreateBuilder(args);
 
