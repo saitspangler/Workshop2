@@ -1,0 +1,35 @@
+﻿@model List<TravelExperts.ViewModels.BookingDetailViewModel>
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>My Bookings</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Booking Date</th>
+            <th>Trip Start</th>
+            <th>Trip End</th>
+            <th>Description</th>
+            <th>Destination</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bookingDetail in Model)
+        {
+            <tr>
+                <td>@bookingDetail.BookingId</td>
+                <td>@(bookingDetail.Booking.BookingDate?.ToString("d") ?? "")</td>
+                <td>@(bookingDetail.TripStart.HasValue ? bookingDetail.TripStart.Value.ToShortDateString() : string.Empty)</td>
+                <td>@(bookingDetail.TripEnd.HasValue ? bookingDetail.TripEnd.Value.ToShortDateString() : string.Empty)</td>
+                <td>@bookingDetail.Description</td>
+                <td>@bookingDetail.Destination</td>
+                <td>@string.Format("{0:C}", bookingDetail.BasePrice)</td>
+            </tr>
+        }
+    </tbody>
+</table>

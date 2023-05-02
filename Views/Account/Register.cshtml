@@ -1,0 +1,72 @@
+﻿@model TravelExperts.Models.Customer
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label asp-for="CustFirstName">First Name:</label>
+        <input asp-for="CustFirstName" />
+        <span asp-validation-for="CustFirstName" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CustLastName">Last Name:</label>
+        <input asp-for="CustLastName" />
+        <span asp-validation-for="CustLastName" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CustAddress">Address:</label>
+        <input asp-for="CustAddress" />
+        <span asp-validation-for="CustAddress" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CustCity">City:</label>
+        <input asp-for="CustCity" />
+        <span asp-validation-for="CustCity" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CustProv">Province:</label>
+        <input asp-for="CustProv" />
+        <span asp-validation-for="CustProv" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CustPostal">Postal Code:</label>
+        <input asp-for="CustPostal" />
+        <span asp-validation-for="CustPostal" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CustCountry">Country:</label>
+        <input asp-for="CustCountry" />
+        <span asp-validation-for="CustCountry" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CustHomePhone">Home Phone:</label>
+        <input asp-for="CustHomePhone" />
+        <span asp-validation-for="CustHomePhone" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CustBusPhone" class="control-label"></label>
+        <input asp-for="CustBusPhone" class="form-control" />
+        <span asp-validation-for="CustBusPhone" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="CustEmail">Email:</label>
+        <input asp-for="CustEmail" type="email" />
+        <span asp-validation-for="CustEmail" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Username">Username:</label>
+        <input asp-for="Username" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Password">Password:</label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,12 @@
+﻿@model TravelExperts.Models.Package
+
+<h1>Package Details</h1>
+<div>
+    <h2>@Model.PkgName</h2>
+    <p>Start Date: @(Model.PkgStartDate?.ToString("MMMM dd, yyyy"))</p>
+    <p>End Date: @(Model.PkgEndDate?.ToString("MMMM dd, yyyy"))</p>
+    <p>Description: @Model.PkgDesc</p>
+    <p>Base Price: @Model.PkgBasePrice.ToString("C")</p>
+    <p>Agency Commission: @Model.PkgAgencyCommission?.ToString("C")</p>
+    <a class="btn btn-primary" asp-controller="Account" asp-action="ReservePackage" asp-route-id="@Model.PackageId">Reserve</a>
+</div>

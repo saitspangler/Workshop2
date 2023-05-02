@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Home";
+}
+
+<h1>Welcome to Travel Experts</h1>
+<p>Explore the world with our fantastic travel packages!</p>
+
+<form asp-controller="Home" asp-action="SearchPackages" method="get">
+    <div class="input-group">
+        <select class="form-control" name="selectedPackage" required>
+            <option value="">Select a package</option>
+            @foreach (var packageName in ViewBag.PackageNames)
+            {
+                <option value="@packageName">@packageName</option>
+            }
+        </select>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </div>
+</form>
