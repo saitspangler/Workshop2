@@ -17,6 +17,26 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+.home {
+    background-image: url('../images/greece1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.nav-link {
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 0.25rem;
+}
+
+.navbar-nav {
+    list-style-type: none;
+}
+
+.navbarto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

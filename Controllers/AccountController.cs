@@ -31,11 +31,14 @@ namespace TravelExperts.Controllers
 
             if (validCustomer != null)
             {
+                // Store the CustomerId in the session
+                HttpContext.Session.SetInt32("CustomerId", validCustomer.CustomerId);
+
                 var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, validCustomer.Username),
-            new Claim(ClaimTypes.NameIdentifier, validCustomer.CustomerId.ToString())
-        };
+            {
+                new Claim(ClaimTypes.Name, validCustomer.Username),
+                new Claim(ClaimTypes.NameIdentifier, validCustomer.CustomerId.ToString())
+            };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
@@ -51,6 +54,8 @@ namespace TravelExperts.Controllers
             }
         }
 
+
+        [HttpPost]
         public async Task<IActionResult> ReservePackage(int id)
         {
             var package = await _context.Packages.FindAsync(id);
@@ -69,6 +74,17 @@ namespace TravelExperts.Controllers
             // Retrieve the logged-in user's CustomerId
             int customerId = HttpContext.Session.GetInt32("CustomerId").Value;
 
+            // Find a suitable ProductSupplierId based on PackageId
+            var packageProductSupplier = _context.PackagesProductsSuppliers
+                                   .FirstOrDefault(pps => pps.PackageId == id);
+
+            int? productSupplierId = null;
+
+            if (packageProductSupplier != null)
+            {
+                productSupplierId = packageProductSupplier.ProductSupplierId;
+            }
+
             // Create a new Booking
             Booking booking = new Booking
             {
@@ -78,13 +94,33 @@ namespace TravelExperts.Controllers
                 // Add other necessary properties
             };
 
-            // Save the new booking to the database
+            // Save the new Booking to the database
             _context.Bookings.Add(booking);
             await _context.SaveChangesAsync();
 
+            // Create a new BookingDetail
+            BookingDetail bookingDetail = new BookingDetail
+            {
+                BookingId = booking.BookingId,
+                ItineraryNo = 1, // Set the ItineraryNo (modify as needed)
+                TripStart = package.PkgStartDate,
+                TripEnd = package.PkgEndDate,
+                Description = package.PkgDesc,
+                Destination = "Example Destination", // Set the Destination (modify as needed)
+                BasePrice = package.PkgBasePrice,
+                AgencyCommission = package.PkgAgencyCommission,
+                ProductSupplierId = productSupplierId, // Use the retrieved ProductSupplierId
+                                                       // Set other properties for BookingDetail
+            };
+
+            // Save the new BookingDetail to the database
+            _context.BookingDetails.Add(bookingDetail);
+            await _context.SaveChangesAsync();
+
             // Redirect the user to their bookings page
-            return RedirectToAction("Index", "Bookings");
+            return RedirectToAction("MyBookings", "Bookings");
         }
+
 
 
         [HttpPost]

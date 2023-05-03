@@ -8,5 +8,8 @@
     <p>Description: @Model.PkgDesc</p>
     <p>Base Price: @Model.PkgBasePrice.ToString("C")</p>
     <p>Agency Commission: @Model.PkgAgencyCommission?.ToString("C")</p>
-    <a class="btn btn-primary" asp-controller="Account" asp-action="ReservePackage" asp-route-id="@Model.PackageId">Reserve</a>
+    <form asp-controller="Account" asp-action="ReservePackage" method="post">
+        <input type="hidden" name="id" value="@Model.PackageId" />
+        <button type="submit" class="btn btn-primary">Reserve</button>
+    </form>
 </div>
