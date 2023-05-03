@@ -29,6 +29,10 @@ html {
     background-image: url('../images/login.jpeg');
 }
 
+.banner-image-register {
+    background-image: url('../images/register.jpg');
+}
+
 .nav-link {
     color: white;
     font-size: 18px;
@@ -70,3 +74,4 @@ footer {
 .mt-5 {
     margin-top: 0px;
 }
+
