@@ -2,15 +2,20 @@
     Layout = "_Layout";
 }
 
-<h2>Login</h2>
-<form method="post">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" />
+
+<div class="container my-5 d-grid gap-5">
+    <div class="p-5 border">
+        <h2>Login</h2>
+        <form method="post">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" />
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" />
+            </div>
+            <button type="submit">Login</button>
+        </form>
     </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" />
-    </div>
-    <button type="submit">Login</button>
-</form>
+
