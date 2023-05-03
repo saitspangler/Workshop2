@@ -17,11 +17,9 @@ html {
   min-height: 100%;
 }
 
-.home {
+.banner-image {
     background-image: url('../images/greece1.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
 }
 
 .nav-link {
