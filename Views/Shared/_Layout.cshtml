@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -64,10 +65,68 @@
       </div>
     </nav>
 
-
     <div>
         @RenderBody()
     </div>
+
+    <footer class="bg-dark text-white mt-5">
+        <div class="container py-5">
+            
+            <div class="row justify-content-center pb-4">
+                <!-- Social Media Links -->
+                <div class="col-md-4 text-center">
+                    <div style="text-align: center; margin-top: 10px;">
+                        <h5 style="text-decoration: none; color: #fff;">Follow Us</h5>
+                    </div>
+                    <div class="social-icons" style="margin-top: 10px;">
+                        <a href="https://www.facebook.com/" target="_blank" class="social-icon">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="social-icon">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row pb-4">
+                <!-- Contact Information -->
+                <div class="col-md-12 text-center mt-3">
+                    <h5>Contact Information</h5>
+                    <address>
+                        <strong>Travel Experts</strong><br>
+                        1234 Street Rd<br>
+                        Calgary, AB, T3M 0B4<br>
+                        <abbr title="Phone">Phone:</abbr> (403) 483-5014
+                    </address>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Newsletter Subscription -->
+                <div class="col-md-12 text-center mt-3">
+                    <h6>Subscribe to our newsletter</h6>
+                    <form>
+                        <div class="input-group justify-content-center">
+                            <input type="email" class="form-control" placeholder="Email" style="max-width: 300px;">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit">Subscribe</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-secondary text-center py-3">
+            <p class="mb-0">&copy; 2023 Travel Expert. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+
+ 
     <!-- Add jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -80,6 +139,7 @@
     <script src="~/lib/popper.js/dist/umd/popper.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    
 
     <script>
 
@@ -94,5 +154,7 @@
         });
 
     </script>
+    
+
 </body>
 </html>

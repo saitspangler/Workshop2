@@ -4,9 +4,14 @@
     ViewData["Title"] = "Contact";
 }
 
-<h2>Contact Us</h2>
+
+
+<div class="container my-5 d-grid gap-5">
+
+
 
 <form asp-action="Contact" method="post">
+        <h2>Contact Us</h2>
     <div class="form-group">
         <label asp-for="Name">Name</label>
         <input asp-for="Name" class="form-control" />
@@ -29,3 +34,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>

@@ -18,8 +18,15 @@ html {
 }
 
 .banner-image {
-    background-image: url('../images/greece1.jpg');
     background-size: cover;
+}
+
+.banner-image-home {
+    background-image: url('../images/greece1.jpg');
+}
+
+.banner-image-login {
+    background-image: url('../images/login.jpeg');
 }
 
 .nav-link {
@@ -37,4 +44,29 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+
+
+.social-icon {
+    color: white;
+    margin-right: 10px;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+        color: #007bff;
+}
+
+.container.my-5.d-grid.gap-5 {
+    padding-top: 70px;
+}
+
+footer {
+    margin-top:0px;
+}
+
+.mt-5 {
+    margin-top: 0px;
 }

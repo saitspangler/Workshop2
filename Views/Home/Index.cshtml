@@ -5,13 +5,13 @@
 
 <body class="home">
 
-    <div class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center">
+    <div class="banner-image banner-image-home w-100 vh-100 d-flex justify-content-center align-items-center">
         <div class="content text-center">
             <h1 class="text-white">Welcome to Travel Experts!</h1>
             <form asp-controller="Home" asp-action="SearchPackages" method="get">
                 <div class="input-group">
-                    <select class="form-control" name="selectedPackage" required>
-                        <option value="">Select a package</option>
+                    <select class="form-control btn-outline-secondary" name="selectedPackage" required>
+                        <option value="">Where do you want to go next?</option>
                         @foreach (var packageName in ViewBag.PackageNames)
                         {
                             <option value="@packageName">@packageName</option>
