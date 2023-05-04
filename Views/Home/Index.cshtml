@@ -27,11 +27,43 @@
 
 <p>Explore the world with our fantastic travel packages!</p>
 
-<div class="container my-5 d-grid gap-5">
-    <div class="p-5 border">
-            <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
-</div>
+    <div class="container">
+        <div class="panel active" style="background-image: url(images/lakelouise.jpg)">
+            <h3>Iceland</h3>
+        </div>
+        <div class="panel" style="background-image: url(images/santiago.webp)">
+            <h3>Iceland</h3>
+        </div>
+        <div class="panel" style="background-image: url(images/iceland2.jpg)">
+            <h3>Iceland</h3>
+        </div>
+        <div class="panel" style="background-image: url(images/greece.jpg)">
+            <h3>Lake Louise</h3>
+        </div>
+        <div class="panel" style="background-image: url(images/greece.jpg)">
+            <h3>Lake Louise</h3>
+        </div>
+    </div>
 
+<script>
+
+    const panels = document.querySelectorAll ('.panel')
+
+    panels.forEach((panel) => {
+        panel.addEventListener('click',()=> {
+            removeActiveClasses()
+            panel.classList.add ('active')
+        })
+    })
+
+    function removeActiveClasses() {
+        panels.forEach((panel) => {
+            panel.classList.remove('active') 
+
+        })
+
+    }
+</script>
 
 </body>
 
