@@ -34,11 +34,15 @@ namespace TravelExperts.Controllers
                 // Store the CustomerId in the session
                 HttpContext.Session.SetInt32("CustomerId", validCustomer.CustomerId);
 
+                // Add the FirstName claim
+                var firstNameClaim = new Claim("FirstName", validCustomer.CustFirstName);
+
                 var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, validCustomer.Username),
-                new Claim(ClaimTypes.NameIdentifier, validCustomer.CustomerId.ToString())
-            };
+        {
+            new Claim(ClaimTypes.Name, validCustomer.Username),
+            new Claim(ClaimTypes.NameIdentifier, validCustomer.CustomerId.ToString()),
+            firstNameClaim // Add the claim to the list of claims
+        };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
@@ -53,6 +57,7 @@ namespace TravelExperts.Controllers
                 return View();
             }
         }
+
 
 
         [HttpPost]

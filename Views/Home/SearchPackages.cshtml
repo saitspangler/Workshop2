@@ -1,15 +1,50 @@
 ﻿@model TravelExperts.Models.Package
+@{
+    string packageImage = "";
+    switch (Model.PkgName)
+    {
+        case "Polynesian Paradise":
+            packageImage = "~/images/french.png";
+            break;
+        case "European Vacation":
+            packageImage = "~/images/europe.png";
+            break;
+        case "Caribbean New Year":
+            packageImage = "~/images/caribbean (1).png";
+            break;
+        case "Asian Expedition":
+            packageImage = "~/images/asia.png";
+            break;
+    }
 
-<h1>Package Details</h1>
-<div>
-    <h2>@Model.PkgName</h2>
-    <p>Start Date: @(Model.PkgStartDate?.ToString("MMMM dd, yyyy"))</p>
-    <p>End Date: @(Model.PkgEndDate?.ToString("MMMM dd, yyyy"))</p>
-    <p>Description: @Model.PkgDesc</p>
-    <p>Base Price: @Model.PkgBasePrice.ToString("C")</p>
-    <p>Agency Commission: @Model.PkgAgencyCommission?.ToString("C")</p>
-    <form asp-controller="Account" asp-action="ReservePackage" method="post">
-        <input type="hidden" name="id" value="@Model.PackageId" />
-        <button type="submit" class="btn btn-primary">Reserve</button>
-    </form>
+}
+
+
+<h1 class="text-center mb-4"></h1>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">@Model.PkgName</h2>
+            <img id="packageImage" alt="@Model.PkgName" class="img-fluid rounded mx-auto d-block mb-3" />
+
+            <p class="card-text">Start Date: @(Model.PkgStartDate?.ToString("MMMM dd, yyyy"))</p>
+            <p class="card-text">End Date: @(Model.PkgEndDate?.ToString("MMMM dd, yyyy"))</p>
+            <p class="card-text">Description: @Model.PkgDesc</p>
+            <p class="card-text">Base Price: @Model.PkgBasePrice.ToString("C")</p>
+            <p class="card-text">Agency Commission: @Model.PkgAgencyCommission?.ToString("C")</p>
+            <form asp-controller="Account" asp-action="ReservePackage" method="post" class="text-center">
+                <input type="hidden" name="id" value="@Model.PackageId" />
+                <button type="submit" class="btn btn-primary">Reserve</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var packageImagePath = '@packageImage';
+        var resolvedPath = packageImagePath.replace('~', '');
+        document.getElementById('packageImage').src = resolvedPath;
+    });
+</script>
+

@@ -4,29 +4,36 @@
     ViewData["Title"] = "Contact";
 }
 
-<div class="container my-5 d-grid gap-5">
-	<form asp-action="Contact" method="post">
-		<h2>Contact Us</h2>
-		<div class="form-group">
-			<label asp-for="Name">Name</label>
-			<input asp-for="Name" class="form-control" />
-			<span asp-validation-for="Name" class="text-danger"></span>
-		</div>
-		<div class="form-group">
-			<label asp-for="Email">Email</label>
-			<input asp-for="Email" class="form-control" />
-			<span asp-validation-for="Email" class="text-danger"></span>
-		</div>
-		<div class="form-group">
-			<label asp-for="Subject">Subject</label>
-			<input asp-for="Subject" class="form-control" />
-			<span asp-validation-for="Subject" class="text-danger"></span>
-		</div>
-		<div class="form-group">
-			<label asp-for="Message">Message</label>
-			<textarea asp-for="Message" class="form-control" rows="4"></textarea>
-			<span asp-validation-for="Message" class="text-danger"></span>
-		</div>
-		<button type="submit" class="btn btn-dark">Submit</button>
-	</form>
+
+<div class="banner-image banner-image-login w-100 vh-100 d-flex justify-content-center align-items-center">
+	<div class="container my-5 d-grid gap-5">
+		<h2 style="color: white; text-align: center;padding-bottom: 3px;">Contact Us</h2>
+			<div class="card">
+				<div class="card-body">
+					<form asp-action="Contact" method="post">
+						<div class="form-group">
+							<label asp-for="Name">Name</label>
+							<input asp-for="Name" class="form-control" />
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Email">Email</label>
+							<input asp-for="Email" class="form-control" />
+							<span asp-validation-for="Email" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Subject">Subject</label>
+							<input asp-for="Subject" class="form-control" />
+							<span asp-validation-for="Subject" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Message">Message</label>
+							<textarea asp-for="Message" class="form-control" rows="4"></textarea>
+							<span asp-validation-for="Message" class="text-danger"></span>
+						</div>
+							<button type="submit" class="btn btn-dark">Submit</button>
+					</form>
+				</div>
+			</div>
+	</div>
 </div>
